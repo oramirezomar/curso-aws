@@ -25,8 +25,9 @@ describe("Render — property-based", () => {
         const { container } = render(<AwsIcon id={id} label={label} />);
         const img = container.querySelector("img");
         expect(img).not.toBeNull();
-        const alt = img!.getAttribute("alt") ?? "";
-        expect(alt.length).toBeGreaterThanOrEqual(1); // nunca vacío (cae a defaultLabel)
+        const alt = (img!.getAttribute("alt") ?? "").trim();
+        // El alt útil nunca queda vacío: si el label es vacío/espacios, AwsIcon cae a defaultLabel.
+        expect(alt.length).toBeGreaterThanOrEqual(1);
       }),
       RUNS,
     );
@@ -43,7 +44,7 @@ describe("Render — property-based", () => {
         const { container } = render(<AwsIcon id={id} label="Servicio" />);
         const img = container.querySelector("img");
         expect(img).not.toBeNull();
-        expect((img!.getAttribute("alt") ?? "").length).toBeGreaterThanOrEqual(1);
+        expect((img!.getAttribute("alt") ?? "").trim().length).toBeGreaterThanOrEqual(1);
       }),
       RUNS,
     );
