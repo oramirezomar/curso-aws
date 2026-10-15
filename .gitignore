@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+dist
+*.local
+.DS_Store
+.env*.local
+next-env.d.ts
+
+# Artefacto de build TS (no versionar)
+tsconfig.tsbuildinfo
+
+# Imagen de referencia (no forma parte del curso)
+Image.jpeg
